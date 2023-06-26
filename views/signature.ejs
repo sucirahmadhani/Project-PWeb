@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="../css/upload.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+               <img src="../images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">SignUrDoc</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/home">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="/signature/signature">
+                    <i class="uil uil-pen"></i>
+                    <span class="link-name">Upload Signature</span>
+                </a></li>
+                <li><a href="/document/document">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Upload Document</span>
+                </a></li>
+                <li><a href="/profile/profile">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="login.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="list">
+        
+    </div>
+    <section class="dashboard">
+        <div class="top">
+            <img src="../images/profile.jpg" alt="">
+        </div>
+        <div class="dash-content">
+
+            <div class="activity">
+                <div class="title">
+                    <i class="uil uil-pen"></i>
+                    <span class="text">Upload Signature</span>
+                </div>
+                <ul class="file-library">
+                    <li>
+                      <div class="file-icon">
+                        <img src="../images/pdf.png" alt="PDF Icon">
+                      </div>
+                      <p class="file-name">File 1.pdf</p>
+                    </li>
+                    <li>
+                      <div class="file-icon">
+                        <img src="../images/example.png" alt="Image Icon">
+                      </div>
+                      <p class="file-name">Image 1.jpg</p>
+                    </li>
+                    <!-- Tambahkan elemen <li> untuk file-file lainnya -->
+                </ul>  
+            </div>
+        </div>
+
+        <div class="upload-file">
+            <input type="file" id="file-upload" class="file-input">
+            <label for="file-upload" class="upload-button">Upload New Signature</label>
+            <span class="file-name">No file chosen</span>
+        </div>
+    </section>
+    
+
+
+
+</body>
+</html>

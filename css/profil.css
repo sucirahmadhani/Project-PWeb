@@ -12,25 +12,34 @@ body {
 }
 
 .img-account-profile {
+  
   height: 10rem;
+  display:flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .rounded-circle {
   border-radius: 50% !important;
+}
+.profil-card{
+  display:flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding:20px;
 }
+
 .card {
   box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
-  width: 25%;
+  width: 35%;
+  display:flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .card .card-header {
   font-weight: 500;
-  align-items: center;
-  justify-content: center;
 }
 .card-header:first-child {
   border-radius: 0.35rem 0.35rem 0 0;
@@ -123,3 +132,4 @@ input[type="submit"] {
 .file-name {
   margin-left: 10px;
 }
+

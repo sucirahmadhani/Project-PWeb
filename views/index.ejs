@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <!----======== CSS ======== -->
+        <link rel="stylesheet" href="/css/style.css">
+  
+        <!----===== Iconscout CSS ===== -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>SignUrDoc</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <span class="logo_name">SignUrDoc</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/home">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="/signature/signature">
+                    <i class="uil uil-pen"></i>
+                    <span class="link-name">Upload Signature</span>
+                </a></li>
+                <li><a href="/profile/profile">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="login.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <img src="/images/profile.jpg" alt="">
+        </div>
+
+        <div class="dash-content">
+             <div class="activity">
+                <div class="title">
+                    <i class="uil uil-estate"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+
+            <div class="tables-full">
+                <div class="all-documents">
+                    <div class="heading">
+                        <h2>Documents</h2>
+                    </div>
+                    <table class="documents">
+                        <thead>
+                            <td>File Name</td>
+                            <td>Email</td>
+                            <td>Status</td>
+                            <td>Actions</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>document!</td>
+                                <td>Benjamin</td>
+                                <td>Need Sign</td>
+                                <td>
+                                    <div class="icon">
+                                        <div class="icon-sign">
+                                            <div class="tooltip">Sign</div>
+                                            <span><i class="uil uil-edit-alt"></i></span> 
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="upload-file">
+                        <input type="file" id="file-upload" class="file-input">
+                        <label for="file-upload" class="upload-button">Upload New Document</label>
+                        <span class="file-name">No file chosen</span>
+                    </div>
+                    <button class="submit-btn" type='submit'>Upload</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById('file-upload').addEventListener('change', function(event) {
+          const fileInput = event.target;
+          const file = fileInput.files[0];
+      
+          if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+
+            const response = await fetch ('/api/upload', {
+                method : 'POST',
+                headers : {
+                    'Content-type' : 'application/json'
+                },
+            });
+            if (response.ok) {
+                console.log('File berhasil diunggah:', data);
+                const data = await response.json(); 
+                }
+            } else {
+                console.error('Gagal mengunggah file:', error);
+            }
+            
+          });
+      </script>
+      
+      
+</body>
+</html>

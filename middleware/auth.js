@@ -1,96 +1,65 @@
-var connection = require('../connection');
-var mysql = require('mysql2');
-var response = require('../response');
-var jwt = require('jsonwebtoken');
-var config = require('../config/secret');
-var ip = require('ip');
-var md5 = require('MD5');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const User = require('../models/users');
+require("dotenv").config()
 
-/*Registrasi User*/
-exports.registrasi = function (req, res) {
-    var post = {
-         username: req.body.username,
-         email: req.body.email,
-         password: req.body.password,
-         active: req.body.active,
-         sign_img:req.body.sign_img,
-         created_at: new Date(),
-         updated_at: new Date()
-    }
+// Registrasi User
+exports.register = async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-    var query = "SELECT email FROM ?? WHERE ??=?";
-    var table = ["users", "email", post.emai];
+    const user = new User({
+      username,
+      email,
+      password: hashedPassword,
+      active : 1
+    });
 
-    query = mysql.format(query, table);
+    await user.save();
 
-    connection.query(query, function (error, rows) {
-        if (error) {
-             console.log(error);
-        }else{
-            if(rows.length == 0){
-                var query = "INSERT INTO ?? SET ?";
-                var table = ["users"];
-                query = mysql.format(query, table);
-                connection.query(query, post, function(error, rows){
-                    if(error){
-                        console.log(error);
-                    }else{
-                        response.ok("Registration success", res);
-                    }
-                });
-            }else{
-                response.ok("email already registered", res);
-            }
-        }
-    })
-}
+    res.json({ message: 'Registrasi berhasil' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Registrasi gagal' });
+  }
+};
 
 // Login User
-exports.login = function (req, res) {
-    var post ={
-        password: req.body.password,
-        email: req.body.email
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { email: email } });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email atau password salah'
+      });
     }
 
-    var query = "SELECT * FROM ?? WHERE ??=? AND ??=?";
-    var table = ["user", "password", md5(post.password), "email", post.email];
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email atau password salah'
+      });
+    }
 
-    query = mysql.format(query, table);
-    connection.query(query, function(error, rows){
-        if(error){
-            console.log(error);
-        }else {
-            if(rows.length == 1){
-                var token = jwt.sign({rows}, config.secret, {
-                    expiresIn: 1440
-                });
-                id_user = rows[0].id;
-                
-                var data = {
-                    id_user: id_user,
-                    access_token: token,
-                    ip_address: ip.address()
-                }
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-                var query = "INSER INTO ?? SET ??";
-                var table =["akses_token"];
-
-                query = mysql.format(query, table);
-                connection.query(query, data, function(error, rows){
-                    if(error){
-                        console.log(error);
-                    }else{
-                        res.json({
-                            success: true,
-                            message: 'Token JWT tergenerate!',
-                            token: token,
-                            currUser: data.id_user
-                        });
-                    }
-                });
-            } else{
-                res.json({"Error": true, "Message": "Email or Password is wrong!"});
-            }
-        }
+    res.status(200).json({
+      success: true,
+      message: 'Login berhasil',
+      token: token
     });
-}
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Login gagal!'
+    });
+  }
+};
+

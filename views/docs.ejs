@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="../css/upload.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+               <img src="../images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">SignUrDoc</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/home">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="/signature/signature">
+                    <i class="uil uil-pen"></i>
+                    <span class="link-name">Upload Signature</span>
+                </a></li>
+                <li><a href="/document/document">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Upload Document</span>
+                </a></li>
+                <li><a href="/profile/profile">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="login.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <img src="../images/profile.jpg" alt="">
+        </div>
+
+        <div class="dash-content">
+             <div class="activity">
+                <div class="title">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="text">Upload Document</span>
+                </div>
+
+                <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+
+            <!-- <div class="tables-full">
+                <div class="all-documents">
+                    <div class="heading">
+                        <h2>My Documents</h2>
+                    </div>
+                    <table class="documents">
+                        <thead>
+                            <td>File Name</td>
+                            <td>Status</td>
+                            <td>Actions</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>document!</td>
+                                <td>Need Sign</td>
+                                <td>
+                                    <i class="uil uil-edit-alt"></i>
+                                    <i class="uil uil-message"></i>
+                                    <i class="uil uil-file-edit-alt"></i>
+                                    <i class="uil uil-trash"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Emma</td>
+                                <td>Signed</td>
+                                <td>
+                                    <i class="uil uil-edit-alt"></i>
+                                    <i class="uil uil-message"></i>
+                                    <i class="uil uil-file-edit-alt"></i>
+                                    <i class="uil uil-trash"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Olivia Smith </td>
+                                <td>sent</td>
+                                <td>
+                                    <i class="uil uil-edit-alt"></i>
+                                    <i class="uil uil-message"></i>
+                                    <i class="uil uil-file-edit-alt"></i>
+                                    <i class="uil uil-trash"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Isabella Doe</td>
+                                <td>sent</td>
+                                <td>
+                                    <i class="uil uil-edit-alt"></i>
+                                    <i class="uil uil-message"></i>
+                                    <i class="uil uil-file-edit-alt"></i>
+                                    <i class="uil uil-trash"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>docdoc </td>
+                                <td>Signed</td>
+                                <td>
+                                    <i class="uil uil-edit-alt"></i>
+                                    <i class="uil uil-message"></i>
+                                    <i class="uil uil-file-edit-alt"></i>
+                                    <i class="uil uil-trash"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Liam Smith Doe</td>
+                                <td>Sent</td>
+                                <td>
+                                    <i class="uil uil-edit-alt"></i>
+                                    <i class="uil uil-message"></i>
+                                    <i class="uil uil-file-edit-alt"></i>
+                                    <i class="uil uil-trash"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="upload-file">
+                        <input type="file" id="file-upload" class="file-input">
+                        <label for="file-upload" class="upload-button">Upload New Document</label>
+                        <span class="file-name">No file chosen</span>
+                    </div> -->
+                <!-- </div>
+            </div> -->
+        </div>
+    </div>
+    </section>    
+
+    
+</body>
+</html>

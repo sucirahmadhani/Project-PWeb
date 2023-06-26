@@ -1,16 +1,8 @@
-var mysql = require('mysql2');
+//database
+const sequalize =  require('sequelize')
+const db = new sequalize('project', 'root', '', {
+    host    : "localhost",
+    dialect : "mysql"
+})
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "project"
-});
-
-conn = connection;
-conn.connect((err)=>{
-    if(err) throw err;
-    console.log('Mysql connected');
-});
-
-module.exports = conn;
+module.exports = db

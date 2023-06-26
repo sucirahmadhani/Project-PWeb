@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use('/auth', require('./middleware'));
-app.use('/api/upload', document)
+app.use('/api', document)
 
 
 database.authenticate().then(() => {
@@ -46,6 +46,7 @@ app.use('/document', document)
 app.use('/profile', profile)
 
 const { index } = require('./controller');
+
 
 
 module.exports = app;
